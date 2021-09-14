@@ -28,7 +28,9 @@ import { TodosComponent } from './todos/todos.component';
 @NgModule({
   /** 
    * declarations 선언
+   * 컴포넌트를 사용하기 위해 선언하는 곳
    * 대체적으로 템플릿에서 사용할 것들을 선언함
+   * declartions 속성에 어떤 컴포넌트를 넣을 것인가를 고려하는 것이 Angular 모듈화의 핵심
   */
   declarations: [
     TodosComponent
@@ -38,7 +40,8 @@ import { TodosComponent } from './todos/todos.component';
   ],
   /**
    * provider 공급
-   * 서비스를 공급 할 때 사용
+   * 전역에서 사용되는 서비스를 해당 객체에서 사용할 수 있도록 생성
+   * provider는 앱 모든 곳에 접근할 수 있다.
   */
   providers: [], 
   exports: [
@@ -48,14 +51,81 @@ import { TodosComponent } from './todos/todos.component';
 export class TodoModule { }
 
 ```
++) app.module.ts
+```js
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    TodoModule
+  ],
+  providers: [],
+
+/**
+ * bootstrap
+ * 루트 컴포넌트라고 하는 메인 어플리케이션의 뷰를 선언
+ * 쉽게 말해 해당 모듈이 시작되었을 때 우선적으로 실행될 컴포넌트를 지정
+ * bootstrap속성은 루트 모듈에만 존재
+*/
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+```
 
 ## Component
+- 빌딩 블록(LEGO)
+- HTML 요소들의 그룹
+- 뷰와 로직으로 구성
 
-- ng 통해서 컴포넌트 빼기 가능
+### todo-app 구조
+```html
+<app-root>
+    <title/>
+    <todos>
+        <todo/>
+        <add-todo/>
+    </todos>
+</app-root>
+```
+
+```js
+
+import { Component, OnInit } from '@angular/core';
+
+/** 
+ * @ 데코레이터 영역
+ * 데코레이터는 JavaScript 클래스를 변형하는 함수다
+ * Angular는 클래스가 어떤 특징을 가지며 어떻게 동작해야
+ * 하는지 메타데이터를 여러개 구현해두고 있다.
+ * 메타데이터 : 객체, 컴포넌트가 어떻게 동작하는지 정의
+ * 
+ * selector : DOM selector(#id, .class와 같이 작성가능) 
+ * templateUrl : view에 대한 저의
+ * styleUrls : 스타일 파일 url(배열구조로 여러개의 파일 url을 기입할 수 있음)
+*/
+@Component({
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss']
+})
+/**
+ * 클래스영역
+ * 로직 작성
+*/
+export class TodosComponent implements OnInit {
+  constructor() { }
+  ngOnInit(): void {
+  }
+}
+```
+- ng 명령어를 통해 todo component 생성
+```bash
+ng g n todo --inline-template --inline-style
+```
 
 ## Template
-
-
-## 키워드
-- @ 데코레이터
-- 메타데이터

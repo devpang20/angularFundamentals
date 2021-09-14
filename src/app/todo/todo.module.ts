@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodosComponent } from './todos/todos.component';
+import { TodoComponent } from './todos/todo/todo.component';
 
 
 
 @NgModule({
   // 탬플릿에서 사용하는거
   declarations: [
-    TodosComponent
+    TodosComponent,
+    TodoComponent
   ],
   imports: [
     CommonModule
