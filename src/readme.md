@@ -124,8 +124,8 @@ export class TodosComponent implements OnInit {
 }
 ```
 - ng 명령어를 통해 todo component 생성
+- --inline-template, --inline-style : 컴포넌트 안에 작성되게 파일 생성
 ```bash
-ng g n todo --inline-template --inline-style
+ng g c todo/todos/todo --inline-template --inline-style
 ```
-
 ## Template
