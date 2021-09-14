@@ -3,13 +3,11 @@
     <h2>9월 14일</h2>
 </div>
 <div>
-    <div>
-        <app-todo></app-todo>
-    </div>
-    <div>
-        <app-todo></app-todo>
+    <div *ngFor="let todo of todos" (click)="toggleTodo(todo)">
+        <input type="checkbox" [checked]="todo.done"> {{ todo.text }}
     </div>
 </div>
 <div>
-    <input type="text" placeholder="할 일을 입력하세요">
+    <input type="text" placeholder="할 일을 입력하세요" [(ngModel)]="newText" >
+    <button (click)="addTodo(newText)">add</button>
 </div>

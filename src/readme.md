@@ -129,3 +129,8 @@ export class TodosComponent implements OnInit {
 ng g c todo/todos/todo --inline-template --inline-style
 ```
 ## Template
+
+- HTML 코드로 템플릿을 표현
+  - 템플릿 표현식
+  - 템플릿 문장
+- 바인딩: 바인딩의 대상 => 속성, 이벤트, ngModel, class, style

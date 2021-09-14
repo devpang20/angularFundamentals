@@ -7,9 +7,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
-  constructor() { }
+  newText: string = '';
+  todos: {
+    done: boolean,
+    text: string
+  }[];
+  
+  constructor() { 
+    this.todos = [
+      { done: false, text: '통번역' },
+      { done: false, text: '알고리즘' },
+    ]
+  }
 
   ngOnInit(): void {
+  }
+
+  toggleTodo(todo:{done: boolean, text: string}) {
+    todo.done = !todo.done
+  }
+
+  addTodo(newText: string) {
+    this.todos.push({
+      done: false,
+      text: newText
+    });
+    this.newText = '';
   }
 
 }
