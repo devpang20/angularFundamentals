@@ -1,13 +1,13 @@
 <div class="title">
     <h1>날짜</h1>
-    <h2>9월 14일</h2>
+    <h2>{{ today | date:'M월 d일' }}</h2>
 </div>
 <div>
     <div *ngFor="let todo of todos" (click)="toggleTodo(todo)">
-        <input type="checkbox" [checked]="todo.done"> {{ todo.text }}
+        <app-todo [todo]="todo"></app-todo>
     </div>
 </div>
 <div>
-    <input type="text" placeholder="할 일을 입력하세요" [(ngModel)]="newText" >
-    <button (click)="addTodo(newText)">add</button>
+    <app-add-todo (onTodoAdded)="addTodo($event)"></app-add-todo>
 </div>
+{{ todos | json }}

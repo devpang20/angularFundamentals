@@ -132,5 +132,41 @@ ng g c todo/todos/todo --inline-template --inline-style
 
 - HTML 코드로 템플릿을 표현
   - 템플릿 표현식
+  ```js
+  Component(class) => Dom
+  
+  {{템플릿 표현식}} <h1>{{title}}</h2>
+  [속성]="템플릿 표현식" <todo [todo]="work">
+  ```
   - 템플릿 문장
+  ```js
+  Component(class) <= Dom
+  
+  (이벤트)="템플릿 문장" <button (cilck)="handle()">
+  [(ngModel)]="템플릿 표현식" <input type="text" [(ngModel)]="name">
+  ```
 - 바인딩: 바인딩의 대상 => 속성, 이벤트, ngModel, class, style
+
+## 컴포넌트 통신
+- 부모 => 자식 컴포넌트
+  - @Input()을 사용
+  - ES6 setter 사용가능
+  - @View Child()를 사용
+- 자식 => 부모 컴포넌트
+  - @Output()을 사용
+  - EventEmitter를 사용하여 부모에게 이벤트 전달
+  - 부모 컴포넌트는 $event로 이벤트의 데이터를 전달 받음
+  - 자식이 부모 컴포넌트를 직접 주입받을 수 있음(강력한 의존 관계로 사용시 주의가 필요)
+
+## Pipe
+- 템플릿에서 보이는 데이터를 변환
+```js
+ {{ express | pipName: paramValue }}
+ {{today | date }}
+ {{today | date:"yy/mm/dd" }}
+ {{today | date | uppercase }}
+```
+- json 출력 검사 팁
+```js
+{{ todos | json }}
+````
