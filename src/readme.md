@@ -170,3 +170,4 @@ ng g c todo/todos/todo --inline-template --inline-style
 ```js
 {{ todos | json }}
 ````
+- 파이프는 커스텀이 가능
